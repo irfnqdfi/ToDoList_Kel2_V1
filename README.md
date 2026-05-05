@@ -1,8 +1,8 @@
 # To-Do List (Version 1)
 
-> [!NOTE]
+> [!NOTE]   
 > Proyek ini adalah **fork** dari [ramazancetinkaya/simple-todolist](https://github.com/ramazancetinkaya/simple-todolist).
-> Repository ini merupakan tugas kelompok dari **Kelompok 2** untuk membuat **To-Do List Versi 1** 
+> Repository ini merupakan tugas kelompok dari **Kelompok 2 Praktikum Pemrograman Web** untuk membuat **To-Do List Versi 1** 
 
 
 
