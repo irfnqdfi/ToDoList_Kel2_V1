@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Master | Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+  <!-- Background decoration -->
+  <div class="bg-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <div class="auth-wrapper">
+    <!-- Brand Side -->
+    <div class="brand-panel">
+      <div class="brand-content">
+        <div class="brand-logo">
+          <i class="fas fa-check-double"></i>
+        </div>
+        <h1 class="brand-title">Task Master</h1>
+        <p class="brand-tagline">Organize your day,<br>achieve your goals.</p>
+        <div class="brand-features">
+          <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Data tersimpan aman di browser kamu</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-users"></i>
+            <span>Mendukung banyak akun di satu perangkat</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-bolt"></i>
+            <span>Cepat, ringan, dan praktis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Panel -->
+    <div class="form-panel">
+
+      <!-- LOGIN FORM -->
+      <div class="auth-card" id="loginCard">
+        <div class="card-header">
+          <h2>Selamat Datang!</h2>
+          <p>Silakan masuk terlebih dahulu</p>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <div class="input-wrap">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="loginEmail" placeholder="nama@email.com" autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="loginPassword" placeholder="Masukkan password" autocomplete="current-password" />
+            <button class="toggle-pass" type="button" onclick="togglePassword('loginPassword', this)">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-footer-link">
+          <button class="link-btn" onclick="showCard('forgotCard')">Lupa password?</button>
+        </div>
+
+        <div class="error-msg" id="loginError"></div>
+
+        <button class="btn-primary" id="loginBtn" onclick="handleLogin()">
+          <span>Masuk</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+
+        <p class="switch-text">
+          Belum punya akun? <button class="link-btn" onclick="showCard('registerCard')">Daftar sekarang</button>
+        </p>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div class="auth-card hidden" id="registerCard">
+        <div class="card-header">
+          <h2>Buat Akun Baru</h2>
+          <p>Daftarkan dirimu untuk mulai</p>
+        </div>
+
+        <div class="form-group">
+          <label>Nama</label>
+          <div class="input-wrap">
+            <i class="fas fa-user"></i>
+            <input type="text" id="regName" placeholder="Masukkan nama" autocomplete="name" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <div class="input-wrap">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="regEmail" placeholder="nama@email.com" autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="regPassword" placeholder="Min. 6 karakter" autocomplete="new-password" />
+            <button class="toggle-pass" type="button" onclick="togglePassword('regPassword', this)">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <div class="password-strength" id="strengthBar">
+            <div class="strength-fill" id="strengthFill"></div>
+          </div>
+          <span class="strength-label" id="strengthLabel"></span>
+        </div>
+
+        <div class="form-group">
+          <label>Pertanyaan Keamanan <small>(untuk lupa password)</small></label>
+          <div class="input-wrap">
+            <i class="fas fa-question-circle"></i>
+            <select id="regQuestion">
+              <option value="">-- Pilih pertanyaan --</option>
+              <option value="pet">Nama hewan peliharaan pertama kamu?</option>
+              <option value="school">Nama SD kamu?</option>
+              <option value="city">Kota kelahiran kamu?</option>
+              <option value="mother">Nama tengah ibumu?</option>
+              <option value="friend">Nama teman masa kecil kamu?</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Jawaban</label>
+          <div class="input-wrap">
+            <i class="fas fa-key"></i>
+            <input type="text" id="regAnswer" placeholder="Jawaban kamu" />
+          </div>
+        </div>
+
+        <div class="error-msg" id="registerError"></div>
+
+        <button class="btn-primary" id="registerBtn" onclick="handleRegister()">
+          <span>Daftar</span>
+          <i class="fas fa-user-plus"></i>
+        </button>
+
+        <p class="switch-text">
+          Sudah punya akun? <button class="link-btn" onclick="showCard('loginCard')">Masuk di sini</button>
+        </p>
+      </div>
+
+      <!-- FORGOT PASSWORD FORM -->
+      <div class="auth-card hidden" id="forgotCard">
+
+        <!-- Back button -->
+        <button class="back-btn" onclick="showCard('loginCard')">
+          <i class="fas fa-arrow-left"></i> Kembali ke Login
+        </button>
+
+        <!-- Step Progress Indicator -->
+        <div class="step-progress">
+          <div class="step-item active" id="stepDot1">
+            <div class="step-dot"><i class="fas fa-envelope"></i></div>
+            <span>Email</span>
+          </div>
+          <div class="step-line" id="stepLine1"></div>
+          <div class="step-item" id="stepDot2">
+            <div class="step-dot"><i class="fas fa-shield-alt"></i></div>
+            <span>Verifikasi</span>
+          </div>
+          <div class="step-line" id="stepLine2"></div>
+          <div class="step-item" id="stepDot3">
+            <div class="step-dot"><i class="fas fa-lock"></i></div>
+            <span>Password Baru</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Email -->
+        <div id="forgotStep1" class="step-content">
+          <div class="step-heading">
+            <div class="step-icon-circle">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h2>Cari Akun Kamu</h2>
+            <p>Masukkan email yang terdaftar untuk memulai proses reset password</p>
+          </div>
+          <div class="form-group">
+            <label>Alamat Email</label>
+            <div class="input-wrap">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="forgotEmail" placeholder="nama@email.com" />
+            </div>
+          </div>
+          <div class="error-msg" id="forgotError1"></div>
+          <button class="btn-primary" onclick="handleForgotStep1()">
+            <span>Cari Akun</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <!-- Step 2: Security Question -->
+        <div id="forgotStep2" class="step-content hidden">
+          <div class="step-heading">
+            <div class="step-icon-circle green">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2>Verifikasi Identitas</h2>
+            <p>Jawab pertanyaan keamanan yang kamu buat saat daftar</p>
+          </div>
+          <div class="question-card" id="securityQuestionText"></div>
+          <div class="form-group">
+            <label>Jawaban Kamu</label>
+            <div class="input-wrap">
+              <i class="fas fa-key"></i>
+              <input type="text" id="forgotAnswer" placeholder="Ketik jawaban di sini..." />
+            </div>
+          </div>
+          <div class="error-msg" id="forgotError2"></div>
+          <button class="btn-primary" onclick="handleForgotStep2()">
+            <span>Verifikasi</span>
+            <i class="fas fa-check"></i>
+          </button>
+        </div>
+
+        <!-- Step 3: New Password -->
+        <div id="forgotStep3" class="step-content hidden">
+          <div class="step-heading">
+            <div class="step-icon-circle purple">
+              <i class="fas fa-unlock-alt"></i>
+            </div>
+            <h2>Buat Password Baru</h2>
+            <p>Pilih password yang kuat dan mudah diingat olehmu</p>
+          </div>
+          <div class="form-group">
+            <label>Password Baru</label>
+            <div class="input-wrap">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="newPassword" placeholder="Min. 6 karakter" />
+              <button class="toggle-pass" type="button" onclick="togglePassword('newPassword', this)">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Konfirmasi Password</label>
+            <div class="input-wrap">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="confirmPassword" placeholder="Ulangi password baru" />
+              <button class="toggle-pass" type="button" onclick="togglePassword('confirmPassword', this)">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          <div class="error-msg" id="forgotError3"></div>
+          <button class="btn-primary" onclick="handleResetPassword()">
+            <span>Simpan Password Baru</span>
+            <i class="fas fa-check-circle"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
