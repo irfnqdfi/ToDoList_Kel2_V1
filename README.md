@@ -1,4 +1,10 @@
-# To-Do List
+# To-Do List (Version 1)
+
+> [!NOTE]
+> Proyek ini adalah **fork** dari [ramazancetinkaya/simple-todolist](https://github.com/ramazancetinkaya/simple-todolist).
+> Repository ini merupakan tugas kelompok dari **Kelompok 2** untuk membuat **To-Do List Versi 1** 
+
+
 
 [![GitHub license](https://img.shields.io/github/license/ramazancetinkaya/simple-todolist.svg)](LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/ramazancetinkaya/simple-todolist)](https://github.com/ramazancetinkaya/simple-todolist/issues)
